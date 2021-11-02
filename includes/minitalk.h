@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/17 15:51:09 by user42            #+#    #+#             */
-/*   Updated: 2021/11/02 15:23:57 by user42           ###   ########.fr       */
+/*   Updated: 2021/11/02 16:10:10 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,8 @@ typedef struct	s_stack
 	_Bool		buffer_oversize;
 }				t_stack;
 
-t_stack         to_print = {{0}, 1 << 6, 0, FALSE, FALSE};
+t_stack			g_to_print = {{0}, 1 << 6, 0, FALSE, FALSE};
 
-int			ft_atoi(const char *str);
-char		*ft_itoa(int n);
-void        error(char* string_error);
-void		ft_bzero(void *s, size_t n);
-
+void    error(char* string_error);
 
 #endif
