@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server_main.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 15:43:03 by user42            #+#    #+#             */
-/*   Updated: 2021/11/02 18:41:30 by saich            ###   ########.fr       */
+/*   Updated: 2021/11/03 04:02:27 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <zconf.h>
 #include "minitalk.h"
 #include "libft.h"
-//#include <bits/types/siginfo_t.h>
+#include <bits/types/siginfo_t.h>
 
 void	print_pid(void)
 {
