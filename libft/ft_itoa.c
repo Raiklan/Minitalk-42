@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 16:28:48 by saich             #+#    #+#             */
-/*   Updated: 2021/11/03 03:06:52 by saich            ###   ########.fr       */
+/*   Updated: 2021/11/03 03:55:21 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,6 @@ static int	nul(int n)
 	return (i);
 }
 
-static char	*mallok(int i, int n)
-{
-	char	*ret;
-
-	ret = malloc(sizeof(char) * i + 1 + nega(n));
-	if (!ret)
-	{
-		free(ret);
-		return (NULL);
-	}
-	return (ret);
-}
-
 char	*ft_itoa(int n)
 {
 	char	*dest;
@@ -66,8 +53,8 @@ char	*ft_itoa(int n)
 	i = nul(n);
 	while (nbr != 0 && i++ <= 2147483647)
 		nbr /= 10;
-	dest = mallok(i, n);
-	if (dest == NULL)
+	dest = malloc(sizeof(char) * i + 1 + nega(n));
+	if (!dest)
 		return (0);
 	j = 0;
 	nbr = n;
@@ -82,3 +69,32 @@ char	*ft_itoa(int n)
 	dest[j] = '\0';
 	return (dest);
 }
+/*
+char			*ft_itoa(int n)
+{
+	char	*dest;
+	int		i;
+	int		j;
+	long	nbr;
+
+	i = 0;
+	nbr = n;
+	n == 0 ? i = 1 : 0;
+	while (nbr != 0 && i++ <= 2147483647)
+		nbr /= 10;
+	if (!(dest = malloc(sizeof(char) * i + 1 + (n < 0 ? 1 : 0))))
+		return (0);
+	j = 0;
+	nbr = n;
+	if (nega(nbr) == 1)
+	{
+		dest[0] = '-';
+		j = 1;
+		nbr = -nbr;
+	}
+	while (i-- > 0)
+		dest[j++] = nbr / power(10, i) % 10 + '0';
+	dest[j] = '\0';
+	return (dest);
+}
+*/
