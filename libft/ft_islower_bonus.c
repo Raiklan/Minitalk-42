@@ -6,13 +6,13 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 17:31:49 by saich             #+#    #+#             */
-/*   Updated: 2019/10/17 17:33:32 by saich            ###   ########.fr       */
+/*   Updated: 2021/11/02 18:53:01 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_islower(int c)
+int	ft_islower(int c)
 {
 	if (c >= 97 && c <= 122)
 		return (1);

@@ -3,23 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   server_main.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 15:43:03 by user42            #+#    #+#             */
-/*   Updated: 2021/11/02 16:43:58 by user42           ###   ########.fr       */
+/*   Updated: 2021/11/02 18:41:30 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include <signal.h>
 #include <zconf.h>
 #include "minitalk.h"
 #include "libft.h"
-#include <bits/types/siginfo_t.h>
+//#include <bits/types/siginfo_t.h>
 
-
-
-void		print_pid(void)
+void	print_pid(void)
 {
 	char	*tmp_pid;
 
@@ -30,7 +27,7 @@ void		print_pid(void)
 	free(tmp_pid);
 }
 
-void		activebit(int sig, siginfo_t *info, void *context)
+void	activebit(int sig, siginfo_t *info, void *context)
 {
 	(void)sig;
 	(void)context;
@@ -46,7 +43,7 @@ void		activebit(int sig, siginfo_t *info, void *context)
 		g_to_print.buffer_oversize = TRUE;
 }
 
-void		nullbit(int sig, siginfo_t *info, void *context)
+void	nullbit(int sig, siginfo_t *info, void *context)
 {
 	(void)sig;
 	(void)context;
@@ -66,7 +63,7 @@ void		nullbit(int sig, siginfo_t *info, void *context)
 	}
 }
 
-_Bool		main_handler(void)
+_Bool	main_handler(void)
 {
 	while (1)
 	{
@@ -86,10 +83,10 @@ _Bool		main_handler(void)
 	return (TRUE);
 }
 
-int			main(void)
+int	main(void)
 {
-	struct sigaction active_act;
-	struct sigaction null_act;
+	struct sigaction	active_act;
+	struct sigaction	null_act;
 
 	active_act.sa_sigaction = activebit;
 	null_act.sa_sigaction = nullbit;

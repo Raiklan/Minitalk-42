@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:30:59 by saich             #+#    #+#             */
-/*   Updated: 2019/10/17 17:42:09 by saich            ###   ########.fr       */
+/*   Updated: 2021/11/03 03:03:55 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strcpy(char *dst, char const *src)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (src[i])

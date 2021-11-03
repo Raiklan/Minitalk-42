@@ -6,13 +6,13 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 16:28:48 by saich             #+#    #+#             */
-/*   Updated: 2019/10/18 15:43:01 by saich            ###   ########.fr       */
+/*   Updated: 2021/11/03 03:06:52 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		power(long nbr, int powa)
+static int	power(long nbr, int powa)
 {
 	if (powa < 0)
 		return (0);
@@ -21,14 +21,40 @@ static int		power(long nbr, int powa)
 	return (nbr * power(nbr, powa - 1));
 }
 
-static int		nega(int n)
+static int	nega(int n)
 {
 	if (n < 0)
 		return (1);
 	return (0);
 }
 
-char			*ft_itoa(int n)
+static int	nul(int n)
+{
+	int	i;
+
+	i = 0;
+	if (n == 0)
+	{
+		i = 1;
+		return (i);
+	}
+	return (i);
+}
+
+static char	*mallok(int i, int n)
+{
+	char	*ret;
+
+	ret = malloc(sizeof(char) * i + 1 + nega(n));
+	if (!ret)
+	{
+		free(ret);
+		return (NULL);
+	}
+	return (ret);
+}
+
+char	*ft_itoa(int n)
 {
 	char	*dest;
 	int		i;
@@ -37,10 +63,11 @@ char			*ft_itoa(int n)
 
 	i = 0;
 	nbr = n;
-	n == 0 ? i = 1 : 0;
+	i = nul(n);
 	while (nbr != 0 && i++ <= 2147483647)
 		nbr /= 10;
-	if (!(dest = malloc(sizeof(char) * i + 1 + (n < 0 ? 1 : 0))))
+	dest = mallok(i, n);
+	if (dest == NULL)
 		return (0);
 	j = 0;
 	nbr = n;

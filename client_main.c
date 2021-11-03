@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   client_main.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 16:40:10 by user42            #+#    #+#             */
-/*   Updated: 2021/11/02 16:48:17 by user42           ###   ########.fr       */
+/*   Updated: 2021/11/02 18:45:18 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include <signal.h>
 #include <zconf.h>
@@ -64,7 +63,7 @@ void	success(int sig)
 	write(1, "Message has been received, my man\n", 35);
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	if (argc != 3)
 		usage();

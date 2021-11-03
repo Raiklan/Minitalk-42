@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:21:34 by saich             #+#    #+#             */
-/*   Updated: 2019/10/17 17:42:52 by saich            ###   ########.fr       */
+/*   Updated: 2021/11/03 03:06:28 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,12 @@ char	*ft_strjoinfree(char const *s1, char const *s2, int frees1, int frees2)
 	size_t	len;
 
 	len = ft_strlen(s1) + ft_strlen(s2) + 1;
-	if (!(str = malloc(sizeof(char) * len)))
+	str = malloc(sizeof(char) * len);
+	if (!(str))
+	{
+		free(str);
 		return (NULL);
+	}
 	str = ft_strcpy(str, s1);
 	str = ft_strcat(str, s2);
 	if (s1 == s2 && (frees1 || frees2))

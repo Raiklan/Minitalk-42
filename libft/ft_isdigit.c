@@ -6,13 +6,13 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:32:29 by saich             #+#    #+#             */
-/*   Updated: 2019/10/15 17:26:02 by saich            ###   ########.fr       */
+/*   Updated: 2021/11/02 18:52:57 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isdigit(int c)
+int	ft_isdigit(int c)
 {
 	if (c > 47 && c < 58)
 		return (1);

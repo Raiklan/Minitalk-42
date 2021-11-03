@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 12:29:12 by saich             #+#    #+#             */
-/*   Updated: 2019/10/21 16:25:34 by saich            ###   ########.fr       */
+/*   Updated: 2021/11/03 03:08:33 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strrchr(const char *s, int c)
 	char	*start;
 	char	*cur;
 
-	start = (char*)s;
+	start = (char *)s;
 	cur = start;
 	while (*cur != '\0')
 		cur++;

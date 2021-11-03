@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 16:20:25 by saich             #+#    #+#             */
-/*   Updated: 2019/10/22 17:50:51 by saich            ###   ########.fr       */
+/*   Updated: 2021/11/03 03:01:07 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	unsigned char	*str_src;
 
 	stop_c = (unsigned char)c;
-	str_dst = (unsigned char*)dst;
-	str_src = (unsigned char*)src;
+	str_dst = (unsigned char *)dst;
+	str_src = (unsigned char *)src;
 	i = 0;
 	while (i < n)
 	{

@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 14:55:55 by saich             #+#    #+#             */
-/*   Updated: 2019/10/22 16:57:48 by saich            ###   ########.fr       */
+/*   Updated: 2021/11/02 18:51:37 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	whitespace(const char *str, size_t i)
 	return (0);
 }
 
-int			ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	size_t	i;
 	int		sign;

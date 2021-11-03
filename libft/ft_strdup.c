@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 16:41:14 by saich             #+#    #+#             */
-/*   Updated: 2019/10/18 15:01:15 by saich            ###   ########.fr       */
+/*   Updated: 2021/11/03 03:04:57 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,12 @@ char	*ft_strdup(const char *s1)
 	i = 0;
 	while (s1[i])
 		i++;
-	if (!(dest = malloc(sizeof(char) * i + 1)))
+	dest = malloc(sizeof(char) * i + 1);
+	if (!(dest))
+	{
+		free(dest);
 		return (NULL);
+	}
 	i = 0;
 	while (s1[i])
 	{
