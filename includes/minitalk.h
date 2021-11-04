@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 19:58:48 by rtulchiy          #+#    #+#             */
-/*   Updated: 2021/11/04 16:59:21 by user42           ###   ########.fr       */
+/*   Updated: 2021/11/04 17:21:23 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ typedef struct s_stack
 	char		message[BUFFSIZE];
 	int			top_bit;
 	int			top_byte;
-	_Bool		all_receive;
-	_Bool		buff_overflow;
+	_Bool		received;
+	_Bool		buffer_oversize;
 }				t_stack;
 
 t_stack			g_to_print = {{0}, 1 << 6, 0, FALSE, FALSE};
