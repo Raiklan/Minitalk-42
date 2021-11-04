@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/27 16:23:11 by user42            #+#    #+#             */
-/*   Updated: 2021/11/02 18:44:31 by saich            ###   ########.fr       */
+/*   Created: 2021/11/04 16:58:25 by user42            #+#    #+#             */
+/*   Updated: 2021/11/04 16:58:27 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
 #include "libft.h"
 
-void	error(char	*string_error)
+void	error(char *str_error)
 {
-	write(1, string_error, ft_strlen(string_error));
-	_exit(1);
+	write(2, str_error, ft_strlen(str_error));
+	exit(1);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client_main.c                                      :+:      :+:    :+:   */
+/*   main_client.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 16:40:10 by user42            #+#    #+#             */
-/*   Updated: 2021/11/02 18:45:18 by saich            ###   ########.fr       */
+/*   Created: 2021/11/04 16:40:39 by user42            #+#    #+#             */
+/*   Updated: 2021/11/04 16:40:47 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <zconf.h>
 #include "libft.h"
 #include "minitalk.h"
-#include <stdio.h>
 
 void	usage(void)
 {
@@ -22,24 +21,24 @@ void	usage(void)
 	exit(0);
 }
 
-void	send_char(int server_pid, unsigned char byte)
+void	send_char(int pid, unsigned char byte)
 {
-	u_int8_t		counter;
+	u_int8_t		mask;
 
-	counter = 1 << 6;
-	while (counter)
+	mask = 1 << 6;
+	while (mask)
 	{
-		if (byte & counter)
+		if (byte & mask)
 		{
-			if (kill(server_pid, SIGUSR1) == -1)
-				error("Wrong server_pid\n");
+			if (kill(pid, SIGUSR1) == -1)
+				error("bad pid\n");
 		}
 		else
 		{
-			if (kill(server_pid, SIGUSR2) == -1)
-				error("Wrong server_pid\n");
+			if (kill(pid, SIGUSR2) == -1)
+				error("bad pid\n");
 		}
-		counter >>= 1;
+		mask >>= 1;
 		usleep(60);
 	}
 }
@@ -60,13 +59,25 @@ void	main_handler(char *str_pid, char *message)
 void	success(int sig)
 {
 	(void)sig;
-	write(1, "Message has been received, my man\n", 35);
+	write(1, "Data has been received.\n", 25);
 }
 
 int	main(int argc, char **argv)
 {
+	int	i;
+
+	i = 0;
 	if (argc != 3)
 		usage();
+	if (argv[1])
+	{
+		while (argv[1][i] != '\0')
+		{
+			if (ft_isdigit(argv[1][i]) == 0)
+				error("PID must be a number\n");
+			i++;
+		}
+	}
 	signal(SIGUSR1, success);
 	main_handler(argv[1], argv[2]);
 	return (0);

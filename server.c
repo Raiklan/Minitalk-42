@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server_main.c                                      :+:      :+:    :+:   */
+/*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/27 15:43:03 by user42            #+#    #+#             */
-/*   Updated: 2021/11/03 04:02:27 by user42           ###   ########.fr       */
+/*   Created: 2021/11/04 16:56:08 by user42            #+#    #+#             */
+/*   Updated: 2021/11/04 17:04:13 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <zconf.h>
 #include "minitalk.h"
 #include "libft.h"
-#include <bits/types/siginfo_t.h>
 
 void	print_pid(void)
 {
@@ -40,7 +39,7 @@ void	activebit(int sig, siginfo_t *info, void *context)
 	g_to_print.message[g_to_print.top_byte] += g_to_print.top_bit;
 	g_to_print.top_bit >>= 1;
 	if (g_to_print.top_byte == BUFFSIZE - 2 && !g_to_print.top_bit)
-		g_to_print.buffer_oversize = TRUE;
+		g_to_print.buff_overflow = TRUE;
 }
 
 void	nullbit(int sig, siginfo_t *info, void *context)
@@ -54,11 +53,11 @@ void	nullbit(int sig, siginfo_t *info, void *context)
 	}
 	g_to_print.top_bit >>= 1;
 	if (g_to_print.top_byte == BUFFSIZE - 2 && !g_to_print.top_bit)
-		g_to_print.buffer_oversize = TRUE;
+		g_to_print.buff_overflow = TRUE;
 	else if (!g_to_print.message[g_to_print.top_byte]
 		&& !g_to_print.top_bit)
 	{
-		g_to_print.received = TRUE;
+		g_to_print.all_receive = TRUE;
 		kill(info->si_pid, SIGUSR1);
 	}
 }
@@ -68,16 +67,16 @@ _Bool	main_handler(void)
 	while (1)
 	{
 		pause();
-		if (g_to_print.received || g_to_print.buffer_oversize)
+		if (g_to_print.all_receive || g_to_print.buff_overflow)
 		{
 			write(1, g_to_print.message, ft_strlen(g_to_print.message));
 			ft_bzero(g_to_print.message, BUFFSIZE);
 			g_to_print.top_byte = 0;
 			g_to_print.top_bit = 1 << 6;
-			if (g_to_print.received)
+			if (g_to_print.all_receive)
 				write(1, "\n", 1);
-			g_to_print.received = FALSE;
-			g_to_print.buffer_oversize = FALSE;
+			g_to_print.all_receive = FALSE;
+			g_to_print.buff_overflow = FALSE;
 		}
 	}
 	return (TRUE);

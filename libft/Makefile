@@ -32,7 +32,7 @@ OBJ = ft_memset.o \
 	ft_putchar_fd.o \
 	ft_putstr_fd.o \
 	ft_putendl_fd.o \
-	ft_putnbr_fd.o
+	ft_putnbr_fd.o 
 
 NAME = libft.a
 INCLUDES = ../includes/libft.h
