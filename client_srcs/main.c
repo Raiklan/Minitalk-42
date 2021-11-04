@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 22:28:20 by saich             #+#    #+#             */
-/*   Updated: 2021/11/04 22:52:57 by saich            ###   ########.fr       */
+/*   Updated: 2021/11/04 22:55:20 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,11 @@ int	main(int argc, char **argv)
 	i = 0;
 	signal(SIGUSR2, handler);
 	while (argv[2][i] != '\0')
-		send_ascii(atoi(argv[1]), argv[2][i++]);
+		send_ascii(ft_atoi(argv[1]), argv[2][i++]);
 	i = 0;
 	while (i < 7)
 	{
-		kill(atoi(argv[1]), SIGUSR1);
+		kill(ft_atoi(argv[1]), SIGUSR1);
 		wait_sig();
 		i++;
 	}
