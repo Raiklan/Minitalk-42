@@ -6,12 +6,10 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 16:56:08 by user42            #+#    #+#             */
-/*   Updated: 2021/11/04 17:23:22 by user42           ###   ########.fr       */
+/*   Updated: 2021/11/04 17:25:55 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
-#include <zconf.h>
 #include "minitalk.h"
 #include "libft.h"
 

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 19:58:48 by rtulchiy          #+#    #+#             */
-/*   Updated: 2021/11/04 17:21:23 by user42           ###   ########.fr       */
+/*   Updated: 2021/11/04 17:28:41 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 # ifndef FALSE
 #  define FALSE 0
 # endif
+
+# include <signal.h>
+# include <zconf.h>
+# include <bits/types/siginfo_t.h>
 
 typedef struct s_stack
 {
