@@ -6,7 +6,7 @@
 /*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 22:28:20 by saich             #+#    #+#             */
-/*   Updated: 2021/11/04 22:28:22 by saich            ###   ########.fr       */
+/*   Updated: 2021/11/04 22:52:57 by saich            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,21 +77,21 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("The client need the pid and a string\n", 1);
 		exit(EXIT_FAILURE);
 	}
-	else
+	while (argv[1][i] != '\0')
 	{
-		signal(SIGUSR2, handler);
-		while (argv[2][i] != '\0')
-		{
-			send_ascii(atoi(argv[1]), argv[2][i]);
-			i++;
-		}
-		i = 0;
-		while (i < 7)
-		{
-			kill(atoi(argv[1]), SIGUSR1);
-			wait_sig();
-			i++;
-		}
+		if (ft_isdigit(argv[1][i++]) == 0)
+			exit(EXIT_FAILURE);
+	}
+	i = 0;
+	signal(SIGUSR2, handler);
+	while (argv[2][i] != '\0')
+		send_ascii(atoi(argv[1]), argv[2][i++]);
+	i = 0;
+	while (i < 7)
+	{
+		kill(atoi(argv[1]), SIGUSR1);
+		wait_sig();
+		i++;
 	}
 	return (EXIT_SUCCESS);
 }
