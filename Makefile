@@ -1,31 +1,57 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: gpaul <gpaul@student.42.fr>                +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/08/21 03:32:26 by gpaul             #+#    #+#              #
+#    Updated: 2021/08/22 14:15:42 by gpaul            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-SERVER   = server
-CLIENT   = client
-CC	     = gcc
-FLAGS    = -Wall -Werror -Wextra
-LIBS	 = -L./libft -lft
-LIBFT	 = libft.a
+NAME_1			=	server
+NAME_2			=	client
 
-all : $(LIBFT) $(SERVER) $(CLIENT)
 
-$(LIBFT) : 
-	@make -C libft
 
-$(SERVER) : server.o error.o includes/minitalk.h
-	@$(CC) server.o error.o $(LIBS) -o $@
+SRCS_1			=	main.c				\
+					ft_convert_base.c	\
+					ft_convert_base2.c
+SRCS_2			=	main.c				\
+					ft_convert_base.c	\
+					ft_convert_base2.c
 
-$(CLIENT) : client.o error.o includes/minitalk.h
-	@$(CC) client.o error.o $(LIBS) -o $@
+OBJS_1			=	${addprefix server_srcs/,${SRCS_1:.c=.o}}
+OBJS_2			=	${addprefix client_srcs/,${SRCS_2:.c=.o}}
 
-%.o : %.c
-	@$(CC) $(FLAGS) $< -c -I includes
+LD_FLAGS		=	-L libft
+HEAD			=	-I includes -I libft
 
-clean :
-	@make clean -C libft
-	@rm -f *.o
+CC				=	gcc
 
-fclean: clean
-	@make fclean -C libft
-	@rm -f $(SERVER) $(CLIENT)
+CFLAGS			=	-Wall -Werror -Wextra -g -fsanitize=address
 
-re: fclean all
+all				:	${NAME_1} ${NAME_2}
+
+c.o			:
+					${CC} ${CFLAGS} ${HEAD} -c $< -o ${<:.c=.o}
+
+$(NAME_1)		:	${OBJS_1}
+					@make -C libft
+					${CC} ${CFLAGS} ${LD_FLAGS} ${OBJS_1} -o ${NAME_1} -lft
+
+$(NAME_2)		:	${OBJS_2}
+					@make -C libft
+					${CC} ${CFLAGS} ${LD_FLAGS} ${OBJS_2} -o ${NAME_2} -lft
+clean			:
+					make clean -C libft
+					@rm -rf ${OBJS_1} ${OBJS_2}
+
+fclean			:	clean
+					make fclean -C libft
+					@rm -rf ${NAME_1} ${NAME_2}
+
+re				:	fclean all
+
+.PHONY			:	all clean fclean re
